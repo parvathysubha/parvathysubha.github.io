@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Parvathy Subha, climate risk and adaptation economist: loss modelling, impact-based forecasting and climate-resilient social protection across Asia-Pacific.">
+<title>Parvathy Subha Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Single light theme by request: white page, black type, emerald as the single accent. Project tiles in a grid; one detail panel below shows the chosen project. Alert yellow/orange/red appear only where they encode risk. */
+:root{
+  --bg:#FFFFFF; --panel:#F6F8F7; --ink:#000000; --muted:#4A4F4C; --line:#DDE3E0;
+  --em:#047857; --em-strong:#065F46; --em-soft:#E3F4EC; --on-em:#FFFFFF;
+  --a-yellow:#E3B505; --a-orange:#E0751C; --a-red:#C8332B;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Public Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0}
+.wrap{max-width:1080px;margin-inline:auto;display:flex;flex-direction:column;gap:72px;padding-block:24px 64px}
+a{color:var(--em);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--em);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+img{display:block;max-width:100%}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sec-head p{color:var(--muted);max-width:62ch}
+
+nav{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px}
+nav .who{font-family:var(--display);font-weight:700}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;padding:0}
+nav a{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--em)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,8vw,5.2rem);font-weight:700;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--em)}
+.hero .lede{font-size:1.08rem;color:var(--muted);max-width:52ch;margin-top:18px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{font-family:var(--mono);font-size:.82rem;border:1px solid var(--ink);color:var(--ink);background:transparent;padding:8px 14px;border-radius:4px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.solid{background:var(--em);border-color:var(--em);color:var(--on-em)}
+.btn.solid:hover{background:var(--em-strong);border-color:var(--em-strong);color:var(--on-em)}
+figure{margin:0}
+figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+.hero img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.stats > div{padding:18px 16px 18px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stats b{font-family:var(--display);font-size:2.3rem;font-weight:700;line-height:1;color:var(--em);font-variant-numeric:tabular-nums}
+.stats span{font-size:.9rem;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills span{font-size:.8rem;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--bg)}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:16px}
+.tile{display:flex;flex-direction:column;text-align:left;padding:0;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);cursor:pointer;overflow:hidden;font:inherit}
+.tile:hover{border-color:var(--em)}
+.tile[aria-pressed="true"]{border-color:var(--em);box-shadow:0 0 0 2px var(--em)}
+.tile .top{aspect-ratio:16/10;background:var(--em-soft);display:grid;place-items:center;overflow:hidden}
+.tile .top img{width:100%;height:100%;object-fit:cover}
+.tile .top span{font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--em);padding:12px;text-align:center;line-height:1.1}
+.tile .txt{padding:14px;display:flex;flex-direction:column;gap:6px}
+.tile .txt small{font-family:var(--mono);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--em)}
+.tile .txt b{font-family:var(--display);font-size:1.02rem;line-height:1.2}
+.tile .txt i{font-style:normal;font-size:.85rem;color:var(--muted)}
+
+.detail{margin-top:24px;border-top:2px solid var(--ink);padding-top:24px;scroll-margin-top:16px}
+.detail header{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.detail header h3{font-size:clamp(1.3rem,3vw,1.7rem)}
+.body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px}
+.body dl{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.body dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.body dd{margin:2px 0 0}
+.body dd ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.viz{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0;align-self:start}
+.viz .label{color:var(--ink)}
+.viz img{border-radius:4px;width:100%;background:#FFFFFF}
+.flow{display:flex;flex-wrap:wrap;gap:6px}
+.flow span{flex:1 1 110px;background:var(--em-soft);padding:8px 10px;font-size:.85rem;border-left:3px solid var(--em)}
+.flow span small{display:block;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--em)}
+.readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.readout div{border-top:2px solid var(--ink);padding-top:6px}
+.readout b{font-family:var(--display);font-size:1.5rem;font-variant-numeric:tabular-nums;display:block;line-height:1.2}
+.readout span{font-size:.8rem;color:var(--muted)}
+.bar{position:relative;height:26px;margin-bottom:18px;background:linear-gradient(90deg,var(--em-soft) 0 60%,var(--a-yellow) 60% 74%,var(--a-orange) 74% 87%,var(--a-red) 87% 100%);border:1px solid var(--line)}
+.bar i{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--ink);transform:translateX(-1px)}
+.bar u{position:absolute;left:60%;top:100%;font-family:var(--mono);font-size:.68rem;text-decoration:none;color:var(--muted);padding-top:4px;transform:translateX(-50%);white-space:nowrap}
+.verdict{font-weight:600;min-height:3.2em}
+.stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;font-size:.72rem;text-align:center}
+.stages span{background:var(--em-soft);padding:6px 2px;overflow-wrap:anywhere}
+.seg{display:flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+.seg button{flex:1;font-family:var(--mono);font-size:.76rem;padding:8px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.lens{display:flex;flex-direction:column;gap:6px}
+.lens div{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;padding:6px 8px;background:var(--bg);border-left:3px solid var(--line)}
+.lens div.on{border-left-color:var(--em)} .lens div.off{opacity:.45}
+.grid4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.grid4 div{padding:10px;background:var(--bg);border-top:3px solid var(--em);font-size:.85rem}
+.grid4 div b{display:block;font-family:var(--display)}
+.note{font-size:.8rem;color:var(--muted)}
+.bars{display:flex;flex-direction:column;gap:5px}
+.bars .r{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) 3.4em;gap:8px;align-items:center;font-size:.82rem}
+.bars .r span{overflow-wrap:anywhere}
+.bars .r i{display:block;height:12px;background:var(--line);border-radius:0 4px 4px 0;overflow:hidden}
+.bars .r i u{display:block;height:100%;background:var(--em);border-radius:0 4px 4px 0}
+.bars .r b{font-family:var(--mono);font-weight:500;font-size:.78rem;text-align:right;font-variant-numeric:tabular-nums}
+
+.svgbox{overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto}
+
+
+.hero .meta{font-family:var(--mono);font-size:.82rem;margin-top:10px}
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:start}
+.bio{display:flex;flex-direction:column;gap:14px;max-width:66ch}
+.facts{margin:0;display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+.facts > div{padding:12px 0;border-bottom:1px solid var(--line)}
+.facts dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-size:.95rem}
+.pages{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.pagegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.page{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--bg)}
+.page:hover{border-color:var(--em)}
+.page img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.page div{padding:12px;display:flex;flex-direction:column;gap:4px}
+.page b{font-family:var(--display);line-height:1.2}
+.page span{font-size:.85rem;color:var(--muted)}
+.page u{font-family:var(--mono);font-size:.74rem;color:var(--em);text-decoration:none;margin-top:4px}
+
+.tile .top img{object-position:center top}
+.cv{border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;box-shadow:0 12px 28px -18px rgba(0,0,0,.3)}
+.cv h3{font-size:.78rem;font-family:var(--mono);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--em);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px}
+.cv .col{display:flex;flex-direction:column;gap:24px;min-width:0}
+.cv .head{grid-column:1/-1;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.cv .head b{font-family:var(--display);font-size:1.6rem;display:block;line-height:1.1}
+.cv .head span{color:var(--muted)}
+.cv .job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;margin-bottom:12px}
+.cv .job b{font-weight:600}
+.cv .job time{font-family:var(--mono);font-size:.76rem;color:var(--muted);white-space:nowrap}
+.cv .job p{grid-column:1/-1;color:var(--muted);font-size:.92rem}
+.cv ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.92rem}
+@media (max-width:760px){.cv{grid-template-columns:minmax(0,1fr);padding:18px}.cv .job{grid-template-columns:minmax(0,1fr)}}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:start}
+.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px;overflow-x:auto}
+.mapbox svg{display:block;width:100%;min-width:480px;height:auto}
+ol.places{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:p}
+ol.places li{counter-increment:p;display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;font-size:.92rem}
+ol.places li::before{content:counter(p);font-family:var(--mono);font-size:.72rem;width:22px;height:22px;border-radius:50%;background:var(--em);color:var(--on-em);display:grid;place-items:center}
+ol.places small{display:block;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:160px minmax(0,1fr);gap:8px 24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row .when{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.row p{color:var(--muted);max-width:70ch}
+.row b{font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.cols ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cols li{font-size:.95rem}
+.contact{border-top:2px solid var(--ink);padding-top:24px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.contact .links{margin-top:0}
+.mail{font-family:var(--mono);user-select:all;overflow-wrap:anywhere}
+footer{font-size:.8rem;color:var(--muted)}
+
+@media (max-width:760px){
+  .hero,.body,.mapwrap,.about{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .wrap{gap:56px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<nav aria-label="Sections">
+  <span class="who">Parvathy Subha</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#writing">Publications</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div>
+    <p class="label">Climate risk and adaptation economist</p>
+    <h1>Parvathy <em>Subha</em></h1>
+    <p class="lede">I build loss and exposure models for floods, drought, heat and cyclones across Asia and the Pacific, and work with governments to turn them into early warning, sector plans and financing choices.</p>
+    <p class="lede meta">UN ESCAP consultant · Bangkok, Thailand</p>
+    <div class="links">
+      <a class="btn solid" href="#projects">See the projects</a>
+      <a class="btn" href="#about">About me</a>
+      <a class="btn" href="https://www.linkedin.com/in/parvathy-subha-ps1999/">LinkedIn</a>
+      <a class="btn" href="https://github.com/parvathysubha">GitHub</a>
+    </div>
+  </div>
+  <figure>
+    <img src="img/lao-podium.jpg" alt="Parvathy Subha speaking at a podium during a workshop in Lao PDR">
+    <figcaption>Presenting at ESCAP's national workshop in Lao PDR, 2025.</figcaption>
+  </figure>
+</header>
+
+<section aria-label="Work in numbers" class="stats">
+  <div><b>4+</b><span>years on regional projects across Asia and the Pacific</span></div>
+  <div><b>10</b><span>countries with direct project experience</span></div>
+  <div><b>46</b><span>Asia-Pacific countries covered by seasonal climate impact outlooks</span></div>
+  <div><b>4,662</b><span>farmers in a large-scale randomised controlled trial</span></div>
+  <div><b>~90</b><span>officials trained, from 49 agencies</span></div>
+  <div><b>5</b><span>climate risks assessed</span>
+    <div class="pills"><span>Cyclone</span><span>Heat</span><span>Flood</span><span>Drought</span><span>Wildfire</span></div></div>
+</section>
+
+<section id="about">
+  <div class="sec-head">
+    <p class="label">About</p>
+    <h2>Bio</h2>
+  </div>
+  <div class="about">
+    <div class="bio">
+      <p>I am a climate risk and adaptation economist based in Bangkok. I trained as an actuarial economist at the Madras School of Economics, and for more than four years I have worked on regional projects across Asia and the Pacific, mostly with the United Nations ESCAP.</p>
+      <p>My work starts with hazard data on floods, drought, heat, cyclones and wildfire. It ends with something a ministry can use: a loss estimate, a risk map, a seasonal impact outlook or a training course. I have built a loss estimation method with Lao PDR's agriculture ministry, produced seasonal climate impact outlooks covering 46 countries, and developed climate risk profiles that inform social protection in Indonesia and Sri Lanka.</p>
+      <p>Before ESCAP I was at the Council on Energy, Environment and Water in New Delhi, where I ran a randomised controlled trial with 4,662 farmers on climate-resilient farming and designed the monitoring framework for India's National Mission on Natural Farming.</p>
+      <p>I grew up in Kerala near the banks of the Periyar, where floods came every year. That is where my interest in turning risk into preparedness began.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Now</dt><dd>Climate Risk and Social Protection Analytics Consultant, UN ESCAP</dd></div>
+      <div><dt>Focus</dt><dd>Loss modelling, impact-based forecasting, climate-resilient social protection, impact evaluation</dd></div>
+      <div><dt>Training</dt><dd>M.A. Actuarial Economics, Madras School of Economics · B.A. (Hons) Economics, Lady Shri Ram College</dd></div>
+      <div><dt>Tools</dt><dd>Python, QGIS, R, Stata</dd></div>
+      <div><dt>Languages</dt><dd>English, Malayalam, Hindi, Spanish (basic)</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-head">
+    <p class="label">Projects</p>
+    <h2>Ten selected projects, from hazard data to decisions</h2>
+  </div>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="chip" aria-pressed="true" data-f="all">All</button>
+    <button class="chip" aria-pressed="false" data-f="risk">Risk and loss modelling</button>
+    <button class="chip" aria-pressed="false" data-f="fc">Forecasting</button>
+    <button class="chip" aria-pressed="false" data-f="pol">Policy and planning</button>
+    <button class="chip" aria-pressed="false" data-f="ev">Impact evaluation</button>
+  </div>
+
+  <div class="tiles" id="tiles">
+    <button class="tile" data-c="pol" data-p="crisp" aria-pressed="true"><div class="top"><img src="img/crisp-sl-stress-poverty-map.jpg" alt=""></div><div class="txt"><small>Social protection · Indonesia, Sri Lanka</small><b>Climate risk profiles for social protection</b><i>A dashboard of where risk falls and what protection would change.</i></div></button>
+    <button class="tile" data-c="risk" data-p="lao" aria-pressed="false"><div class="top"><img src="img/lao-presenting.jpg" alt=""></div><div class="txt"><small>Loss modelling · Lao PDR</small><b>Future agricultural losses from floods and drought</b><i>A probabilistic loss method built with the national ministry.</i></div></button>
+    <button class="tile" data-c="fc" data-p="ibf" aria-pressed="false"><div class="top"><img src="img/nepal-sahf.jpg" alt=""></div><div class="txt"><small>Forecasting · Regional</small><b>Impact-based forecasting for climate outlook forums</b><i>Seasonal forecasts turned into impacts on people, farms and energy.</i></div></button>
+    <button class="tile" data-c="risk" data-p="heat" aria-pressed="false"><div class="top"><img src="img/nepal-heat-map.jpg" alt=""></div><div class="txt"><small>Heat risk · Nepal</small><b>A heat risk index for Nepal</b><i>Projected hot days under four climate scenarios.</i></div></button>
+    <button class="tile" data-c="risk" data-p="tp" aria-pressed="false"><div class="top"><img src="img/third-pole-flood.jpg" alt=""></div><div class="txt"><small>Flood risk · Hindu Kush Himalaya</small><b>Integrated flood risk assessment for the Third Pole</b><i>A composite winter flood risk map across 13 countries.</i></div></button>
+    <button class="tile" data-c="risk" data-p="mv" aria-pressed="false"><div class="top"><img src="img/maldives-training.jpg" alt=""></div><div class="txt"><small>Climate exposure · Maldives</small><b>Temperature, rainfall and wind exposure in the Maldives</b><i>And which climate models suit South Asia best.</i></div></button>
+    <button class="tile" data-c="risk" data-p="cyc" aria-pressed="false"><div class="top"><img src="img/cyclone-ditwah-track.jpg" alt="" style="object-position:72% 78%"></div><div class="txt"><small>Exposure analysis · Cyclones</small><b>Cyclone impact assessments</b><i>Who is in a storm's path, at each forecast step.</i></div></button>
+    <button class="tile" data-c="ev" data-p="rct" aria-pressed="false"><div class="top"><img src="img/nf-report-photo.jpg" alt="" style="object-position:center"></div><div class="txt"><small>Impact evaluation · India</small><b>Does natural farming work? A randomised trial</b><i>And a lesson in choosing the right metric.</i></div></button>
+    <button class="tile" data-c="ev" data-p="diet" aria-pressed="false"><div class="top"><img src="img/diet-agrico-award.jpg" alt="" style="object-position:center 30%"></div><div class="txt"><small>Impact evaluation · India</small><b>Diet quality in rural Andhra Pradesh</b><i>What actually improves the diets of women farmers.</i></div></button>
+    <button class="tile" data-c="pol" data-p="soil" aria-pressed="false"><div class="top"><img src="img/soil-launch.jpg" alt=""></div><div class="txt"><small>Policy roadmap · India</small><b>A national roadmap for sustainable soil management</b><i>Built from three regional consultations and launched on World Soil Day.</i></div></button>
+  </div>
+
+  <div class="detail" id="detail" aria-live="polite">
+
+  <article id="p-crisp">
+    <header><p class="label">Social protection · Indonesia and Sri Lanka · UN ESCAP, 2026</p><h3>Climate risk profiles for social protection</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Climate and social protection policies are usually designed apart, so the poorest are under-supported after a shock. Where is the risk, who lives there, and what would better protection be worth?</dd></div>
+        <div><dt>What I did</dt><dd>For ESCAP's Climate Resilient and Inclusive Social Protection (CRISP) initiative, I built the risk dashboard and decision-support tool. It:
+          <ul><li>maps drought, flood, wildfire and heat stress from now to 2100 under different climate scenarios</li><li>overlays poverty, so provinces facing both high climate stress and high poverty stand out</li><li>sets out a decade of disaster records and a case study of Cyclone Ditwah's impact and the government's response</li><li>presents ESCAP's modelling of how resilient social protection affects GDP, employment, inflation and poverty</li></ul></dd></div>
+        <div><dt>What it shows</dt><dd>In Sri Lanka under current policies, the share of people facing moderate or worse heat stress rises from 11% in 2030 to 70% in 2050 and 87% in 2100. Provinces with above-average poverty are flagged where that stress falls.</dd></div>
+        <div><dt>Outcome</dt><dd>The dashboard draws on more than 80,000 data points. Indonesia's profile is now a reference for ESCAP's social protection work in Thailand and Sri Lanka, two of nine CRISP countries.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://spot.unescap.org/crisp">CRISP on ESCAP's Social Protection Toolbox</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/crisp-sl-stress-poverty-map.jpg" alt="Three maps of Sri Lanka showing the share of each province's population under heat stress in 2030, 2050 and 2100. The maps darken sharply over time."><figcaption>Share of each province's population under heat stress in 2030, 2050 and 2100, current policies. Red outlines mark provinces with above-average poverty.</figcaption></figure>
+        <p class="label">The risk framework</p>
+        <div class="grid4">
+          <div><b>Hazard</b>What could happen, and how often</div>
+          <div><b>Exposure</b>Who and what is in the way</div>
+          <div><b>Vulnerability</b>How badly they would be hit</div>
+          <div><b>Coping capacity</b>What helps them recover</div>
+        </div>
+      </div>
+    </div>
+    <div class="pages">
+      <p class="label">Explore the dashboard pages</p>
+      <div class="pagegrid"><a class="page" href="crisp/sl-stress-poverty-map.html" target="_blank" rel="noopener"><img src="img/crisp-sl-stress-poverty-map.jpg" alt=""><div><b>Where climate stress and poverty overlap</b><span>Province maps for 2030, 2050 and 2100, by scenario and hazard. Sri Lanka.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/sl-scenario-waffle.html" target="_blank" rel="noopener"><img src="img/crisp-sl-scenario-waffle.jpg" alt=""><div><b>Who is affected under each scenario</b><span>Pick a climate scenario and see the share of people exposed to each hazard. Sri Lanka.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/sl-climate-projections.html" target="_blank" rel="noopener"><img src="img/crisp-sl-climate-projections.jpg" alt=""><div><b>Temperature and rainfall projections</b><span>Share of people in extreme stress by period and scenario, against the poverty rate. Sri Lanka.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/sl-disaster-history.html" target="_blank" rel="noopener"><img src="img/crisp-sl-disaster-history.jpg" alt=""><div><b>A decade of disasters</b><span>People affected, injured and killed each year, 2015 to 2025, by hazard. Sri Lanka.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/sl-ditwah-exposure.html" target="_blank" rel="noopener"><img src="img/crisp-sl-ditwah-exposure.jpg" alt=""><div><b>Cyclone Ditwah: exposure and response</b><span>District exposure map, impact figures and the government's cash assistance. Sri Lanka.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/why-crisp-sri-lanka.html" target="_blank" rel="noopener"><img src="img/crisp-why-crisp-sri-lanka.jpg" alt=""><div><b>The case for resilient social protection: Sri Lanka</b><span>Scrolling story linking social protection coverage to climate risk. Draft with sample data.</span><u>Open the interactive page</u></div></a><a class="page" href="crisp/why-crisp-indonesia.html" target="_blank" rel="noopener"><img src="img/crisp-why-crisp-indonesia.jpg" alt=""><div><b>The case for resilient social protection: Indonesia</b><span>The same story for Indonesia. Draft with sample data.</span><u>Open the interactive page</u></div></a></div>
+    </div>
+  </article>
+
+  <article id="p-lao" hidden>
+    <header><p class="label">Loss modelling · Lao PDR · UN ESCAP, 2025</p><h3>Estimating future agricultural losses in Lao PDR</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>How much rice could Lao PDR lose to floods and drought in future, and which provinces should resilience spending reach first?</dd></div>
+        <div><dt>What I did</dt><dd>Co-developed UN ESCAP's method with Lao PDR's Ministry of Agriculture and Environment and Japan's National Institute for Environmental Studies. It follows the hazard, exposure and vulnerability framework and combines:
+          <ul><li>flood and drought hazard maps at 5-, 10- and 25-year return periods</li><li>rice yield projections from five climate models, under a low and a high emissions scenario</li><li>damage curves for rice, with a statistical range around each loss estimate</li></ul></dd></div>
+        <div><dt>What it found</dt><dd>Under low emissions, expected drought losses stay small, below 5% of rice production. Under high emissions, the northern uplands (Luang Namtha, Oudomxay, Phongsaly) emerge as new hotspots, and losses deepen in the southern rice belt (Savannakhet, Champasak, Attapeu).</dd></div>
+        <div><dt>Outcome</dt><dd>Presented to 55 stakeholders at a national workshop in Vang Vieng. The ministry endorsed the method, and the workshop's commitments fed into the 10th National Socio-Economic Development Plan (2026–2030).</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.unescap.org/events/2025/training-workshop-building-disaster-and-climate-resilience-food-and-energy-crisis-lao">National workshop page</a> · Working paper under review</dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/lao-drought-loss.jpg" alt="Two maps of Lao PDR showing expected drought loss by province, low emissions on the left and high emissions on the right. Losses are far higher in the north and far south under high emissions."><figcaption>Expected annual drought loss as a share of each province's rice production, 2060–2100. Left: low emissions (SSP1-2.6). Right: high emissions (SSP5-8.5). From the working paper.</figcaption></figure>
+        <p class="label">Try it: what a return period means</p>
+        <label for="rp" class="note">Return period: <b id="rpv">25</b> years</label>
+        <input id="rp" type="range" min="0" max="6" step="1" value="3">
+        <div class="readout">
+          <div><b id="aep">4.0%</b><span>chance in any single year</span></div>
+          <div><b id="p30">70.6%</b><span>chance of at least one in 30 years</span></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-ibf" hidden>
+    <header><p class="label">Forecasting · Asia-Pacific · UN ESCAP and Think Blue Data, 2025–2026</p><h3>Impact-based forecasting for regional climate outlook forums</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>A seasonal outlook says where it will be wetter or hotter than normal. What does that mean for the people and sectors in its path?</dd></div>
+        <div><dt>What I did</dt><dd>Built the workflows behind ESCAP's Rapid IBF tool, which translates probabilistic forecasts into exposure of population, agriculture, energy and infrastructure. I added crop calendars, so an anomaly is read against the growth stage the crop is in. Each season's estimates were checked against observed rainfall, temperature and reported impacts.</dd></div>
+        <div><dt>What it showed</dt><dd><ul>
+          <li><b>South-East Asia, winter 2025–26.</b> Presented at the 25th ASEAN Climate Outlook Forum. Almost the whole population of the Philippines was likely to see above-normal rainfall, and about 80% of Timor-Leste's maize area was exposed during its growing season.</li>
+          <li><b>Pacific, November 2025 to January 2026.</b> For island states I assessed root crops such as sweet potato in place of cereals, and solar energy sites. A coral bleaching outlook combined NOAA's forecasts with global reef maps.</li></ul></dd></div>
+        <div><dt>Outcome</dt><dd>The tool sits on ESCAP's Risk and Resilience Portal. I presented the analysis at WMO climate outlook forums in South Asia, South-East Asia and North Eurasia. For the 30th North Eurasia forum, our maps of risk to population, agriculture and hydropower for summer 2026 were published in a co-authored journal paper. With SPREP, I produced the first ocean forecast of coral bleaching stress for Pacific island states.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://rrp.unescap.org/">ESCAP Risk and Resilience Portal</a> · <a href="https://doi.org/10.37162/2618-9631-2026-2-184-199">North Eurasia forum paper</a> · <a href="https://www.sahf.info/sahf-workshops-trainings/regional-workshop-on-ibf-tot-national-demo-temperature-hazards-feb-2026/">South Asia training of trainers</a></dd></div>
+      </dl>
+      <div class="viz">
+        <p class="label">Try it: when does a forecast become a warning?</p>
+        <label for="prob" class="note">Probability of a weather anomaly: <b id="probv">45</b>%</label>
+        <input id="prob" type="range" min="0" max="100" step="1" value="45">
+        <div class="bar" aria-hidden="true"><i id="mark" style="left:45%"></i><u>60% threshold</u></div>
+        <p class="verdict" id="verdict"></p>
+        <p class="label">Read against the crop calendar</p>
+        <div class="stages"><span>Sowing</span><span>Growth</span><span>Flowering</span><span>Grain filling</span><span>Harvest</span></div>
+        <p class="note">The same dry spell does different damage at flowering than at harvest.</p>
+        <figure><img src="img/ibf-asean-maize.jpg" alt="Forecast slide: a map of South-East Asia showing where above-normal rainfall is likely, a chart of maize area exposed by country, and a maize crop calendar."><figcaption>From the ASEAN forum briefing: likely impact of above-normal rainfall on maize, read against the crop calendar.</figcaption></figure>
+        <figure><img src="img/ibf-pacific-coral.jpg" alt="Three charts of coral reef exposure to bleaching stress by Pacific island state, at three levels of forecast confidence."><figcaption>From the Pacific forum briefing: coral bleaching exposure outlook, January to April 2026.</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  
+
+  <article id="p-heat" hidden>
+    <header><p class="label">Heat risk · Nepal · UN ESCAP, 2025</p><h3>A heat risk index for Nepal</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Air temperature alone understates heat stress. How many dangerously hot days should Nepal expect once humidity is counted, and where?</dd></div>
+        <div><dt>What I did</dt><dd>Computed a heat index from temperature and relative humidity in Python, downscaled to 1 km, and mapped the projected number of days with a heat index above 35°C under four climate scenarios. I filled gaps in the humidity data by interpolation and checked the results against the World Bank's Climate Change Knowledge Portal.</dd></div>
+        <div><dt>What it showed</dt><dd>Heat stress concentrates in the southern lowlands along the Indian border, where the index exceeds 35°C for much of the year, while the hills and mountains stay largely below it. The work was part of ESCAP's heat assessments for seven countries and fed the Asia-Pacific Disaster Report 2025.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.preventionweb.net/publication/documents-and-publications/asia-pacific-disaster-report-2025-rising-heat-rising-risk">Asia-Pacific Disaster Report 2025: Rising Heat, Rising Risk</a> · <a href="https://rrp.unescap.org/">ESCAP Risk and Resilience Portal</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/nepal-heat-map.jpg" alt="Four maps of Nepal, one per climate scenario, showing projected hot days. The southern lowlands are dark red with more than 90 hot days; the north is pale."><figcaption>Projected number of days with a heat index above 35°C, under four emissions scenarios from low (SSP1-2.6) to high (SSP5-8.5).</figcaption></figure>
+        <p class="label">How the index is built</p>
+        <div class="flow"><span><small>Input</small>Temperature</span><span><small>Input</small>Relative humidity</span><span><small>Output</small>Heat index</span><span><small>Count</small>Days above 35°C</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-tp" hidden>
+    <header><p class="label">Flood risk · Hindu Kush Himalaya · UN ESCAP, 2025</p><h3>Integrated flood risk assessment for the Third Pole</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Rivers of the Third Pole cross many borders. Where does flood risk concentrate across the whole region in the coming winter, and how many people live there?</dd></div>
+        <div><dt>What I did</dt><dd>Built a composite flood risk map for December 2025 to February 2026. It merges terrain, hydrology, land use and the seasonal rainfall forecast into one layer, each weighted by its influence on flooding. The weights draw on expert judgement and published research. I then overlaid population to estimate the share of people in each risk class, country by country.</dd></div>
+        <div><dt>What it found</dt><dd><ul>
+          <li>Risk is highest in south-east Mongolia, western China (Tibet, Sichuan, Gansu, Xinjiang), Pakistan's Punjab and Sindh, parts of northern and north-east India, and Central Asia.</li>
+          <li>Risk is lowest along the southern Himalayan belt: Himachal Pradesh and Uttarakhand in India, central Nepal and Bhutan.</li>
+          <li>The hotspots reflect strong winter rainfall signals, steep slopes and areas sensitive to cold-season runoff.</li></ul></dd></div>
+        <div><dt>Links</dt><dd><a href="https://rrp.unescap.org/">ESCAP Risk and Resilience Portal</a> · <a href="https://www.unescap.org/blog/era-extreme-heat-teleconnections-glacial-risks-arctic-third-pole">ESCAP blog on glacial risks in the Third Pole</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/third-pole-flood.jpg" alt="ESCAP synopsis slide: a composite flood risk map of the Third Pole region for winter 2025/26, the input layers and their weights, and a table of population by risk class for each country."><figcaption>Work synopsis: the composite risk map, its input layers and population by risk class.</figcaption></figure>
+        <p class="label">How each factor is weighted</p>
+        <div class="bars"><div class="r" title="Above-normal winter rain forecast: 35%"><span>Above-normal winter rain forecast</span><i><u style="width:100.0%"></u></i><b>35%</b></div><div class="r" title="Distance to streams: 30%"><span>Distance to streams</span><i><u style="width:85.7%"></u></i><b>30%</b></div><div class="r" title="Slope: 15%"><span>Slope</span><i><u style="width:42.9%"></u></i><b>15%</b></div><div class="r" title="Elevation: 10%"><span>Elevation</span><i><u style="width:28.6%"></u></i><b>10%</b></div><div class="r" title="Land use and land cover: 10%"><span>Land use and land cover</span><i><u style="width:28.6%"></u></i><b>10%</b></div></div>
+        <p class="label">Share of each country's Third Pole population in high or very high risk</p>
+        <div class="bars"><div class="r" title="Mongolia: 98.7%"><span>Mongolia</span><i><u style="width:98.7%"></u></i><b>98.7%</b></div><div class="r" title="Russia: 97.4%"><span>Russia</span><i><u style="width:97.4%"></u></i><b>97.4%</b></div><div class="r" title="Kyrgyzstan: 96.8%"><span>Kyrgyzstan</span><i><u style="width:96.8%"></u></i><b>96.8%</b></div><div class="r" title="Tajikistan: 87.6%"><span>Tajikistan</span><i><u style="width:87.6%"></u></i><b>87.6%</b></div><div class="r" title="Kazakhstan: 85.6%"><span>Kazakhstan</span><i><u style="width:85.6%"></u></i><b>85.6%</b></div><div class="r" title="China: 84.6%"><span>China</span><i><u style="width:84.6%"></u></i><b>84.6%</b></div><div class="r" title="Pakistan: 69.5%"><span>Pakistan</span><i><u style="width:69.5%"></u></i><b>69.5%</b></div><div class="r" title="Afghanistan: 65.7%"><span>Afghanistan</span><i><u style="width:65.7%"></u></i><b>65.7%</b></div><div class="r" title="India: 15.7%"><span>India</span><i><u style="width:15.7%"></u></i><b>15.7%</b></div><div class="r" title="Uzbekistan: 2.3%"><span>Uzbekistan</span><i><u style="width:2.3%"></u></i><b>2.3%</b></div><div class="r" title="Bhutan: 0.1%"><span>Bhutan</span><i><u style="width:0.1%"></u></i><b>0.1%</b></div><div class="r" title="Myanmar: 0.0%"><span>Myanmar</span><i><u style="width:0.0%"></u></i><b>0.0%</b></div><div class="r" title="Nepal: 0.0%"><span>Nepal</span><i><u style="width:0.0%"></u></i><b>0.0%</b></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-mv" hidden>
+    <header><p class="label">Climate exposure · Maldives · UN ESCAP, 2023</p><h3>Temperature, rainfall and wind exposure in the Maldives</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Which parts of the Maldives are most exposed to changes in temperature, rainfall and surface wind, and which climate models can be trusted for South Asia?</dd></div>
+        <div><dt>What I did</dt><dd>Analysed downscaled climate data in QGIS to calculate exposure to temperature, rainfall and surface wind, and automated the data preparation in R and Python. To choose between climate models, I implemented the Taylor diagram method in R. It scores each model against observations on three measures at once.</dd></div>
+        <div><dt>Outcome</dt><dd>The analysis supported ESCAP's Maldives Sustainable Development and Disaster Risk Resilience project. I then coordinated and delivered advanced geospatial training for national and sub-national officials, and wrote the beginner's GIS handbook used in it.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.unescap.org/events/2023/strengthening-national-and-subnational-capacity-sustainable-disaster-risk-reduction-1">Maldives training event</a> · <a href="https://www.unescap.org/kp/2024/beginners-handbook-geographic-information-system-and-qgis-software">Beginner's Handbook on GIS and QGIS</a> · <a href="https://maldives.un.org/en/316976-extreme-heat-and-coral-reefs-what-it-means-maldives">Blog on heat and coral reefs in the Maldives</a></dd></div>
+      </dl>
+      <div class="viz">
+        <p class="label">Try it: how a Taylor diagram scores a climate model</p>
+        <label for="tr" class="note">Correlation with observations: <b id="trv">0.80</b></label>
+        <input id="tr" type="range" min="0" max="100" step="1" value="80">
+        <label for="ts" class="note">Model variability relative to observed: <b id="tsv">1.20</b></label>
+        <input id="ts" type="range" min="20" max="150" step="1" value="120">
+        <div class="svgbox"><svg id="taylor" viewBox="0 0 360 250" role="img" aria-label="Taylor diagram with one model point"></svg></div>
+        <div class="readout"><div><b id="trms">0.74</b><span>error distance from observations</span></div><div><b id="tgood">Fair</b><span>closer to the reference point is better</span></div></div>
+        <figure><img src="img/maldives-training.jpg" alt="Participants gathered around laptops during a training session in the Maldives"><figcaption>Geospatial analysis training in the Maldives, 2023.</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-cyc" hidden>
+    <header><p class="label">Exposure analysis · Cyclones · UN ESCAP, 2023–2026</p><h3>Cyclone impact assessments: Senyar, Ditwah and Mocha</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>As a cyclone approaches, who and what lies in its path at each forecast step, and when will the impact peak?</dd></div>
+        <div><dt>What I did</dt><dd>Applied ESCAP's impact-based forecasting method to tropical cyclones:
+          <ul><li>took six-hourly forecast bulletins and mapped the zones of strong wind (27 knots and above, and 34 knots and above)</li><li>overlaid population, vulnerable groups, rice production, energy and critical infrastructure at 1 km resolution</li><li>counted what fell inside each wind zone at every time step to find the peak-impact window, which can set triggers for early action</li></ul>
+          The method now runs as a QGIS plug-in, so national agencies can repeat it in three steps.</dd></div>
+        <div><dt>What it found</dt><dd><ul>
+          <li><b>Senyar, November 2025.</b> The first cyclone recorded in the Strait of Malacca in 135 years. Aceh and North Sumatra in Indonesia were hit hardest. At peak impact, 93% of their population was inside the strong-wind zone.</li>
+          <li><b>Ditwah, November 2025.</b> A rare, rapidly intensifying storm. About 2.3 million people were exposed in Sri Lanka. I checked the estimates district by district against the figures reported by Sri Lanka's Disaster Management Centre.</li>
+          <li><b>Mocha, 2023.</b> An earlier assessment.</li></ul></dd></div>
+        <div><dt>Outcome</dt><dd>Published as case studies in the WMO State of the Climate in Asia 2025 and State of the Climate in the South-West Pacific 2025.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://library.wmo.int/records/item/69873-state-of-the-climate-in-asia-2025">State of the Climate in Asia 2025</a> · <a href="https://wmo.int/resources/publication-series/state-of-climate-south-west-pacific/state-of-climate-south-west-pacific-2025">South-West Pacific 2025</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/cyclone-ditwah-track.jpg" alt="Map of southern India and Sri Lanka with Cyclone Ditwah's wind zones shaded over Sri Lanka and population density shown in grey and red."><figcaption>Cyclone Ditwah's forecast wind zones over Sri Lanka on 27 November 2025, laid over population density.</figcaption></figure>
+        <figure><img src="img/cyclone-ditwah.jpg" alt="Map of Cyclone Ditwah's wind zones over Sri Lanka beside a bar chart of population exposed at each six-hourly forecast step."><figcaption>Cyclone Ditwah over Sri Lanka: wind zones on the day of landfall, and population exposed at each forecast step.</figcaption></figure>
+        <p class="label">How the assessment is built</p>
+        <div class="flow"><span><small>01</small>Forecast wind zones</span><span><small>02</small>People and assets overlaid</span><span><small>03</small>Exposure per time step</span><span><small>04</small>Peak-impact window</span></div>
+        <p class="note">Maps from the Cyclone Mocha assessment will be added here.</p>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-rct" hidden>
+    <header><p class="label">Impact evaluation · Andhra Pradesh, India · CEEW, 2023–2025</p><h3>Does natural farming work? A randomised controlled trial</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Is Andhra Pradesh Community-Managed Natural Farming an effective climate adaptation, what makes farmers adopt it, and is it worth scaling?</dd></div>
+        <div><dt>What I did</dt><dd>Coordinated a randomised controlled trial of 4,662 farmers across nine seasonal surveys, managing survey rollout and the econometric analysis. The programme was assessed on effectiveness, economic viability, maladaptation risk, scalability and resilience outcomes. A companion study of 933 long-term natural farming households in 78 village councils, surveyed from October 2022 to April 2024, asked what drives adoption.</dd></div>
+        <div><dt>What it found</dt><dd><ul>
+          <li>Farmers with sustained support from community resource persons adopted about 50% more natural farming practices.</li>
+          <li>Where women took part in farm decisions, households adopted 14% more practices.</li>
+          <li>Health was the main motive: 84% of farmers cited the harms of synthetic inputs, and 51% wanted chemical-free food for their families.</li></ul></dd></div>
+        <div><dt>Outcome</dt><dd>The findings shaped the monitoring and evaluation framework I designed for India's National Mission on Natural Farming, with indicators agreed through 20 expert consultations.</dd></div>
+        <div><dt>Partners</dt><dd>Climate Policy Lab at the Fletcher School, Tufts University · Woodwell Climate Research Center · CEEW</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.ceew.in/publications/how-can-indian-policymakers-support-natural-farming-and-sustainable-agriculture-adoption-strategies">What Drives Natural Farming Adoption in Andhra Pradesh? (CEEW, 2026)</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/nf-report-cover.jpg" alt="Cover of the CEEW issue brief What Drives Natural Farming Adoption in Andhra Pradesh" style="max-height:340px;width:auto;margin-inline:auto"><figcaption>The CEEW issue brief, May 2026, which I co-authored.</figcaption></figure>
+        <p class="label">What made farmers adopt more practices</p>
+        <div class="bars"><div class="r" title="Sustained support from community resource persons: +50%"><span>Sustained support from community resource persons</span><i><u style="width:100.0%"></u></i><b>+50%</b></div><div class="r" title="Friends or relatives who practise it: +25%"><span>Friends or relatives who practise it</span><i><u style="width:50.0%"></u></i><b>+25%</b></div><div class="r" title="Taking part in field demonstrations: +24%"><span>Taking part in field demonstrations</span><i><u style="width:48.0%"></u></i><b>+24%</b></div><div class="r" title="Women involved in farm decisions: +14%"><span>Women involved in farm decisions</span><i><u style="width:28.0%"></u></i><b>+14%</b></div></div>
+        <p class="note">Increase in the number of natural farming practices adopted. Figures come from different seasons, so read them as indications, not a ranking.</p>
+        <p class="label">Try it: the metric decides the story</p>
+        <div class="seg" role="group" aria-label="Choose what to measure">
+          <button id="lensA" aria-pressed="true">Yield only</button>
+          <button id="lensB" aria-pressed="false">Full picture</button>
+        </div>
+        <div class="lens" id="lens">
+          <div class="on"><span>Crop yield</span><span>counted</span></div>
+          <div class="off" data-x><span>Soil quality</span><span>ignored</span></div>
+          <div class="off" data-x><span>Nutrition</span><span>ignored</span></div>
+          <div class="off" data-x><span>Water quality</span><span>ignored</span></div>
+          <div class="off" data-x><span>Women-led self-help groups</span><span>ignored</span></div>
+        </div>
+        <p class="verdict" id="lensv"></p>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-diet" hidden>
+    <header><p class="label">Impact evaluation · Andhra Pradesh, India · CEEW, 2024</p><h3>Diet quality of women farmers in rural Andhra Pradesh</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>Does joining a natural farming programme improve what farm households eat, and what actually drives a diverse diet?</dd></div>
+        <div><dt>What I did</dt><dd>Led a longitudinal study of 2,042 households, interviewing one woman in each with the global diet quality questionnaire after sowing and after harvest. Of these, 438 households were trained in natural farming and 1,604 farmed with chemicals.</dd></div>
+        <div><dt>What it found</dt><dd><ul>
+          <li>Enrolment alone did not improve diets. Crop diversity was low and nearly identical in both groups.</li>
+          <li>Each extra fruit variety in a kitchen garden roughly doubled a woman's odds of an adequately diverse diet.</li>
+          <li>Keeping livestock raised those odds by 29%, and women's empowerment was a further driver.</li>
+          <li>Diets were slightly more diverse after harvest than after sowing.</li></ul></dd></div>
+        <div><dt>Outcome</dt><dd>Best presentation award at the 11th International Conference on Agriculture (AGRICO 2024), Bangkok. The study recommends that such programmes promote kitchen gardens, crop diversification and livestock.</dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/diet-agrico-award.jpg" alt="Parvathy Subha receiving a certificate on stage at the AGRICO 2024 conference in Bangkok."><figcaption>Receiving the best presentation award at AGRICO 2024, Bangkok, September 2024.</figcaption></figure>
+        <figure><img src="img/diet-food-groups.jpg" alt="Radar chart of the share of women eating each food group, after harvest and after sowing. Most groups are eaten more after harvest."><figcaption>Share of women eating each food group, after harvest (green) and after sowing (orange).</figcaption></figure>
+        <p class="label">What raised the odds of a diverse diet</p>
+        <div class="svgbox"><svg id="forest" viewBox="0 0 360 170" role="img" aria-label="Odds ratios with 95% confidence intervals. One more fruit variety in the kitchen garden: 2.12, interval 1.30 to 3.46. Keeping livestock: 1.29, interval 1.01 to 1.66."></svg></div>
+        <p class="note">Odds ratios for meeting minimum dietary diversity for women, with 95% confidence intervals. Values right of the line at 1 mean higher odds.</p>
+        <div class="readout"><div><b>0.14</b><span>crop diversity index, natural farming households</span></div><div><b>0.12</b><span>crop diversity index, chemical farming households</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article id="p-soil" hidden>
+    <header><p class="label">Policy roadmap · India · CEEW with GIZ India, 2023–2024</p><h3>A national roadmap for sustainable soil management</h3></header>
+    <div class="body">
+      <dl>
+        <div><dt>The question</dt><dd>What would it take to manage India's soils sustainably, and how can the practices that already work be scaled?</dd></div>
+        <div><dt>What I did</dt><dd>As part of CEEW, the knowledge partner, I helped develop the draft National Roadmap for Sustainable Soil Management. Under the banner "Meri Maati – Desh Samriddhi", three regional consultations in New Delhi, Mumbai and Guwahati brought together farmer collectives, academia, civil society, the private sector and government.</dd></div>
+        <div><dt>What it recommends</dt><dd><ul>
+          <li>Treat soil as a critical national asset, and soil security as a national issue</li>
+          <li>Mainstream soil action across government departments</li>
+          <li>Use existing farmer support, such as subsidies, to encourage adoption</li>
+          <li>Create village-level "Soil Stewards", or Maati Rakshaks, and support local enterprise</li>
+          <li>Enable technology suited to India's varied farming contexts</li>
+          <li>Strengthen local governance of soil and bioresources</li>
+          <li>Build a data and evidence system for healthy soil</li></ul></dd></div>
+        <div><dt>Outcome</dt><dd>The draft roadmap was launched on World Soil Day at a national convening in New Delhi, co-organised with DAY-NRLM and NDDB Mrida, with representatives of the German Embassy, the Ministry of Rural Development, NITI Aayog, NABARD and farmers from across the country.</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.ceew.in/publications/how-can-india-scale-sustainable-soil-practices-and-health-management-system">Roadmap on CEEW's site</a> · <a href="https://www.ceew.in/sites/default/files/how-can-india-scale-sustainable-soil-practices-and-health-management-system.pdf">Full report (PDF)</a></dd></div>
+      </dl>
+      <div class="viz">
+        <figure><img src="img/soil-launch.jpg" alt="A row of people on stage holding copies of the roadmap at its launch"><figcaption>Launch of the draft roadmap at the Meri Maati – Desh Samriddhi national convening, New Delhi.</figcaption></figure>
+        <p class="label">How the roadmap was built</p>
+        <div class="flow"><span><small>01</small>Three regional consultations</span><span><small>02</small>Draft roadmap</span><span><small>03</small>National convening</span></div>
+      </div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<section id="workshops">
+  <div class="sec-head">
+    <p class="label">Workshops and training</p>
+    <h2>Teaching governments to use the tools</h2>
+    <p>More than ten capacity-building sessions for government agencies and national hydro-met services.</p>
+  </div>
+  <div class="gallery">
+    <figure><img src="img/lao-presenting.jpg" alt="Presenting loss estimates on screen to a workshop audience in Lao PDR"><figcaption>Presenting the loss methodology, Lao PDR, 2025.</figcaption></figure>
+    <figure><img src="img/nepal-sahf.jpg" alt="Group photo of workshop participants in Kathmandu"><figcaption>South Asia Hydromet Forum, Kathmandu, 2026.</figcaption></figure>
+    <figure><img src="img/maldives-training.jpg" alt="Training participants around laptops in the Maldives"><figcaption>Geospatial training, Maldives, 2023.</figcaption></figure>
+  </div>
+  <div class="rows">
+    <div class="row"><span class="when">Feb 2026 · Kathmandu</span><div><b><a href="https://www.sahf.info/sahf-workshops-trainings/regional-workshop-on-ibf-tot-national-demo-temperature-hazards-feb-2026/">South Asia Hydromet Forum, training of trainers</a></b><p>Hands-on training on turning forecasts into sector-specific impacts and early action.</p></div></div>
+    <div class="row"><span class="when">Jul 2025 · Vang Vieng</span><div><b><a href="https://www.unescap.org/events/2025/training-workshop-building-disaster-and-climate-resilience-food-and-energy-crisis-lao">Building disaster and climate resilience in Lao PDR</a></b><p>National workshop with 55 stakeholders from Lao ministries, UNDP, FAO, WMO, IFRC, UNICEF, ITU and Google. It agreed on localised early warning and a standard loss and damage methodology.</p></div></div>
+    <div class="row"><span class="when">2025–2026 · Regional</span><div><b>WMO regional climate outlook forums</b><p>Presented ESCAP's seasonal impact forecasts in South Asia, South-East Asia and North Eurasia. Nearly 90 officials from 49 agencies were trained on the Rapid IBF tool and ESCAP Risk Atlas.</p></div></div>
+    <div class="row"><span class="when">Dec 2023 · New Delhi</span><div><b>Meri Maati – Desh Samriddhi national convening</b><p>Launch of the draft National Roadmap for Sustainable Soil Management, after regional consultations in New Delhi, Mumbai and Guwahati.</p></div></div>
+    <div class="row"><span class="when">2023 · Maldives</span><div><b><a href="https://www.unescap.org/events/2023/strengthening-national-and-subnational-capacity-sustainable-disaster-risk-reduction-1">Advanced geospatial analysis training</a></b><p>Coordinated and delivered training to strengthen national and sub-national capacity for disaster risk reduction, with a <a href="https://www.unescap.org/kp/2024/beginners-handbook-geographic-information-system-and-qgis-software">beginner's handbook on GIS and QGIS</a>.</p></div></div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="sec-head">
+    <p class="label">Publications and knowledge products</p>
+    <h2>Reports, papers and blogs</h2>
+  </div>
+  <div class="cols">
+    <div><p class="label">Flagship reports, contributor</p><ul>
+      <li><a href="https://library.wmo.int/records/item/69873-state-of-the-climate-in-asia-2025">WMO State of the Climate in Asia 2025</a></li>
+      <li><a href="https://wmo.int/resources/publication-series/state-of-climate-south-west-pacific/state-of-climate-south-west-pacific-2025">WMO State of the Climate in the South-West Pacific 2025</a></li>
+      <li><a href="https://www.preventionweb.net/publication/documents-and-publications/asia-pacific-disaster-report-2025-rising-heat-rising-risk">Asia-Pacific Disaster Report 2025: Rising Heat, Rising Risk</a></li>
+      <li><a href="https://www.unescap.org/kp/2023/seizing-moment-targeting-transformative-disaster-risk-resilience">Asia-Pacific Disaster Report 2023: Seizing the Moment</a></li>
+    </ul></div>
+    <div><p class="label">Papers and handbooks, co-author</p><ul>
+      <li>Estimating Future Agricultural Losses in Lao PDR: From Exposure to Probabilistic Risk (working paper under review, 2026)</li>
+      <li><a href="https://doi.org/10.37162/2618-9631-2026-2-184-199">Monitoring and consensus forecasting of the climate system, 30th North Eurasia Climate Outlook Forum</a> (2026, in Russian)</li>
+      <li><a href="https://www.ceew.in/publications/how-can-indian-policymakers-support-natural-farming-and-sustainable-agriculture-adoption-strategies">What Drives Natural Farming Adoption in Andhra Pradesh?</a> (CEEW, 2026)</li>
+      <li><a href="https://www.ceew.in/sites/default/files/how-can-india-scale-sustainable-soil-practices-and-health-management-system.pdf">National Soil Roadmap: Healthy Soil for a Prosperous India</a> (CEEW, 2024)</li>
+      <li><a href="https://www.unescap.org/kp/2024/beginners-handbook-geographic-information-system-and-qgis-software">Beginner's Handbook on GIS and QGIS Software</a> (UN ESCAP, 2024)</li>
+    </ul></div>
+    <div><p class="label">Blogs, co-author</p><ul>
+      <li><a href="https://www.unescap.org/blog/extreme-heat-and-coral-reefs-what-it-means-asia-and-pacific">Extreme Heat and Coral Reefs: What It Means for Asia and the Pacific</a></li>
+      <li><a href="https://maldives.un.org/en/316976-extreme-heat-and-coral-reefs-what-it-means-maldives">Extreme Heat and Coral Reefs: Story of Resilience from Maldives</a></li>
+      <li><a href="https://www.unescap.org/blog/melting-reserves-power-mongolias-glaciers-and-future-energy-and-food-security">Melting Reserves: Mongolia's Glaciers and Future Energy and Food Security</a></li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="sec-head"><p class="label">CV snapshot</p><h2>Curriculum vitae at a glance</h2></div>
+  <div class="cv">
+    <div class="head"><b>Parvathy Subha</b><span>Climate risk and adaptation economist · Bangkok, Thailand</span></div>
+    <div class="col">
+      <div><h3>Experience</h3>
+        <div class="job"><b>Climate Risk and Social Protection Analytics Consultant</b><time>Jul 2026 – now</time><p>UN ESCAP, Social Development Division, Bangkok. Climate risk profiles and the CRISP decision-support dashboard.</p></div>
+        <div class="job"><b>Climate Risk and Economic Impact Analyst</b><time>Jan – Jul 2026</time><p>Think Blue Data, Bangkok. Led work with UN ESCAP on the Rapid IBF tool and cyclone impact assessment.</p></div>
+        <div class="job"><b>Disaster Risk Reduction Consultant</b><time>Apr – Dec 2025</time><p>UN ESCAP, ICT and Disaster Risk Reduction Division, Bangkok. Lao PDR loss methodology, heat risk for seven countries, Third Pole flood risk, forecasting and training.</p></div>
+        <div class="job"><b>Research Analyst (Econometrics)</b><time>Aug 2023 – Apr 2025</time><p>Council on Energy, Environment and Water, New Delhi. Randomised controlled trial on natural farming, diet quality study, soil roadmap, national monitoring framework.</p></div>
+        <div class="job"><b>Economic Affairs Intern</b><time>Dec 2022 – Jun 2023</time><p>UN ESCAP, New Delhi and Bangkok. Maldives climate exposure analysis, geospatial training and the GIS handbook.</p></div>
+      </div>
+      <div><h3>Education</h3>
+        <div class="job"><b>M.A. Actuarial Economics</b><time>2020 – 2022</time><p>Madras School of Economics. CGPA 9.17/10, first rank in the final semester. Thesis on Bayesian covariance estimation for portfolio optimisation.</p></div>
+        <div class="job"><b>B.A. (Hons) Economics</b><time>2017 – 2020</time><p>Lady Shri Ram College for Women, University of Delhi. CGPA 8.39/10.</p></div>
+      </div>
+    </div>
+    <div class="col">
+      <div><h3>Skills</h3><ul>
+        <li><b>Climate risk modelling:</b> probabilistic loss, average annual loss, scenario analysis</li>
+        <li><b>Forecast analytics:</b> impact-based forecasting, heat index, seasonal outlooks</li>
+        <li><b>Spatial analysis:</b> QGIS, raster and vector processing, NetCDF and GeoTIFF</li>
+        <li><b>Python:</b> Pandas, Xarray, GeoPandas, Rasterio, Scikit-learn</li>
+        <li><b>Econometrics:</b> panel data, difference-in-differences, RCT and survey design, Stata, R</li>
+      </ul></div>
+      <div><h3>Recognition</h3><ul>
+        <li>Best presentation, 11th International Conference on Agriculture, Bangkok, 2024</li>
+        <li>Certificate of Excellence, Madras School of Economics</li>
+      </ul></div>
+      <div><h3>Languages</h3><div class="pills"><span>English</span><span>Malayalam</span><span>Hindi</span><span>Spanish (basic)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div>
+    <p class="label">Get in touch</p>
+    <p class="mail" id="mail">parvathyanaghan@gmail.com</p>
+  </div>
+  <div class="links">
+    <button class="btn solid" id="copy">Copy email</button>
+    <a class="btn" href="https://www.linkedin.com/in/parvathy-subha-ps1999/">LinkedIn</a>
+    <a class="btn" href="https://github.com/parvathysubha">GitHub</a>
+  </div>
+</section>
+<footer>Parvathy Subha · Bangkok, Thailand</footer>
+</div>
+
+<script>
+(function(){
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const $ = id => document.getElementById(id);
+  const MONO = 'IBM Plex Mono,monospace';
+
+  // tiles and detail
+  const tiles = [...document.querySelectorAll('.tile')];
+  function show(p, scroll){
+    tiles.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.p===p)));
+    document.querySelectorAll('#detail > article').forEach(a => { a.hidden = a.id !== 'p-'+p; });
+    if (scroll) $('detail').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+  }
+  tiles.forEach(t => t.addEventListener('click', () => show(t.dataset.p, true)));
+  const h = location.hash.replace('#','');
+  if (h && $('p-'+h)) show(h, false);
+
+  // filters
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(ch => ch.addEventListener('click', () => {
+    chips.forEach(o => o.setAttribute('aria-pressed', String(o===ch)));
+    const f = ch.dataset.f;
+    tiles.forEach(t => { t.hidden = !(f==='all' || t.dataset.c===f); });
+  }));
+
+  // return period
+  const RPS=[2,5,10,25,50,100,200], rp=$('rp');
+  function upRP(){ const T=RPS[+rp.value], p=1/T;
+    $('rpv').textContent=T; $('aep').textContent=(p*100).toFixed(1)+'%';
+    $('p30').textContent=((1-Math.pow(1-p,30))*100).toFixed(1)+'%'; }
+  rp.addEventListener('input',upRP); upRP();
+
+  // IBF threshold
+  const pr=$('prob');
+  function upP(){ const v=+pr.value; $('probv').textContent=v; $('mark').style.left=v+'%';
+    $('verdict').textContent = v>=60
+      ? 'At 60% or above the area is flagged. Its risk is then classed as severe, extreme or very extreme, and the impact on people, crops and energy is estimated.'
+      : 'Below 60%, the anomaly is not flagged. The area stays on watch for the next forecast update.'; }
+  pr.addEventListener('input',upP); upP();
+
+  // metric lens
+  const A=$('lensA'), B=$('lensB');
+  function lens(full){ A.setAttribute('aria-pressed',String(!full)); B.setAttribute('aria-pressed',String(full));
+    document.querySelectorAll('#lens [data-x]').forEach(d=>{ d.className = full?'on':'off'; d.lastElementChild.textContent = full?'counted':'ignored'; });
+    $('lensv').textContent = full
+      ? 'Counting soil, nutrition, water and the role of women-led groups, the programme\'s impact is many times larger.'
+      : 'Judged on crop yield alone, switching from chemical to natural farming looks like a net loss.'; }
+  A.addEventListener('click',()=>lens(false)); B.addEventListener('click',()=>lens(true)); lens(false);
+
+  // Taylor diagram: radius = model std dev / observed, angle = acos(correlation)
+  const tr=$('tr'), ts=$('ts');
+  function drawTaylor(){
+    const r=+tr.value/100, s=+ts.value/100, ox=40, oy=215, R=120; // R px per 1.0 std
+    const ink=css('--ink'), mut=css('--muted'), line=css('--line'), em=css('--em'), bg=css('--panel');
+    const X=(sd,c)=>ox+sd*R*c, Y=(sd,c)=>oy-sd*R*Math.sqrt(1-c*c);
+    let g='';
+    [0.5,1,1.5].forEach(sd=>{ g+='<path d="M'+(ox+sd*R)+' '+oy+' A'+sd*R+' '+sd*R+' 0 0 0 '+ox+' '+(oy-sd*R)+'" fill="none" stroke="'+(sd===1?mut:line)+'" stroke-width="1" '+(sd===1?'stroke-dasharray="4 3"':'')+'/><text x="'+(ox+sd*R)+'" y="'+(oy+14)+'" text-anchor="middle" font-family="'+MONO+'" font-size="10" fill="'+mut+'">'+sd.toFixed(1)+'</text>'; });
+    [0,0.3,0.6,0.8,0.95].forEach(c=>{ g+='<line x1="'+ox+'" y1="'+oy+'" x2="'+X(1.5,c)+'" y2="'+Y(1.5,c)+'" stroke="'+line+'" stroke-width="1"/><text x="'+X(1.6,c)+'" y="'+(Y(1.6,c)+3)+'" text-anchor="middle" font-family="'+MONO+'" font-size="10" fill="'+mut+'">'+c+'</text>'; });
+    g+='<line x1="'+ox+'" y1="'+oy+'" x2="'+(ox+1.5*R)+'" y2="'+oy+'" stroke="'+ink+'" stroke-width="1"/><line x1="'+ox+'" y1="'+oy+'" x2="'+ox+'" y2="'+(oy-1.5*R)+'" stroke="'+ink+'" stroke-width="1"/>';
+    g+='<text x="'+(ox+0.75*R)+'" y="'+(oy+28)+'" text-anchor="middle" font-family="'+MONO+'" font-size="10" fill="'+mut+'">Variability relative to observed</text>';
+    g+='<text x="'+(X(1.5,0.6)+34)+'" y="'+(Y(1.5,0.6)-26)+'" font-family="'+MONO+'" font-size="10" fill="'+mut+'">Correlation</text>';
+    const mx=X(s,r), my=Y(s,r), rx=ox+R, ry=oy;
+    g+='<line x1="'+rx+'" y1="'+ry+'" x2="'+mx+'" y2="'+my+'" stroke="'+em+'" stroke-width="2" stroke-dasharray="3 3"/>';
+    g+='<circle cx="'+rx+'" cy="'+ry+'" r="6" fill="'+ink+'" stroke="'+bg+'" stroke-width="2"/><text x="'+(rx+4)+'" y="'+(ry-10)+'" font-family="'+MONO+'" font-size="10" fill="'+ink+'">Observed</text>';
+    g+='<circle cx="'+mx+'" cy="'+my+'" r="7" fill="'+em+'" stroke="'+bg+'" stroke-width="2"/><text x="'+(mx+10)+'" y="'+(my-8)+'" font-family="'+MONO+'" font-size="10" fill="'+ink+'">Model</text>';
+    $('taylor').innerHTML=g;
+    const e=Math.sqrt(1+s*s-2*s*r);
+    $('trv').textContent=r.toFixed(2); $('tsv').textContent=s.toFixed(2); $('trms').textContent=e.toFixed(2);
+    $('tgood').textContent = e<0.4?'Good':e<0.8?'Fair':'Poor';
+  }
+  tr.addEventListener('input',drawTaylor); ts.addEventListener('input',drawTaylor);
+
+  // forest plot (log scale, 0.8 to 4)
+  function drawForest(){
+    const ink=css('--ink'), mut=css('--muted'), line=css('--line'), em=css('--em'), bg=css('--panel');
+    const L=150, Rr=345, lo=Math.log(0.8), hi=Math.log(4), x=v=>L+(Math.log(v)-lo)/(hi-lo)*(Rr-L);
+    const rows=[['One more fruit variety','in the kitchen garden',2.12,1.30,3.46],['Keeping livestock','',1.29,1.01,1.66]];
+    let g='';
+    [1,2,3,4].forEach(t=>{ g+='<line x1="'+x(t)+'" y1="14" x2="'+x(t)+'" y2="128" stroke="'+(t===1?ink:line)+'" stroke-width="1"/><text x="'+x(t)+'" y="144" text-anchor="middle" font-family="'+MONO+'" font-size="10" fill="'+mut+'">'+t+'</text>'; });
+    g+='<text x="'+((L+Rr)/2)+'" y="162" text-anchor="middle" font-family="'+MONO+'" font-size="10" fill="'+mut+'">Odds ratio (log scale)</text>';
+    rows.forEach((r,i)=>{ const y=44+i*56;
+      g+='<text x="0" y="'+(y-(r[1]?4:-4))+'" font-size="12" fill="'+ink+'">'+r[0]+'</text>'+(r[1]?'<text x="0" y="'+(y+11)+'" font-size="12" fill="'+ink+'">'+r[1]+'</text>':'');
+      g+='<g><title>'+r[0]+' '+r[1]+': odds ratio '+r[2]+' (95% CI '+r[3]+' to '+r[4]+')</title><rect x="'+L+'" y="'+(y-18)+'" width="'+(Rr-L)+'" height="36" fill="transparent"/><line x1="'+x(r[3])+'" y1="'+y+'" x2="'+x(r[4])+'" y2="'+y+'" stroke="'+em+'" stroke-width="2"/><circle cx="'+x(r[2])+'" cy="'+y+'" r="6" fill="'+em+'" stroke="'+bg+'" stroke-width="2"/></g>';
+      g+='<text x="'+x(r[2])+'" y="'+(y-12)+'" text-anchor="middle" font-family="'+MONO+'" font-size="11" fill="'+ink+'">'+r[2].toFixed(2)+'</text>'; });
+    $('forest').innerHTML=g;
+  }
+
+  function redraw(){ drawTaylor(); drawForest(); }
+  redraw();
+  if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw);
+  new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  // let viewers open any figure at full size
+  document.querySelectorAll('.viz figure img').forEach(im=>{ const a=document.createElement('a'); a.href=im.getAttribute('src'); a.target='_blank'; a.rel='noopener'; a.title='Open full size'; im.parentNode.insertBefore(a,im); a.appendChild(im); });
+
+  // copy email
+  const cb=$('copy');
+  cb.addEventListener('click',()=>{
+    const t=$('mail').textContent;
+    const done=()=>{cb.textContent='Copied'; setTimeout(()=>cb.textContent='Copy email',1600);};
+    const sel=()=>{const r=document.createRange(); r.selectNodeContents($('mail')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); cb.textContent='Selected, press copy';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done).catch(sel); } else sel();
+  });
+})();
+</script>
+
+</body>
+</html>
